@@ -1,0 +1,61 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1{
+  max-width: 800px; 
+  margin: 0 auto;
+  padding: 20px;
+  color: brown;
+}
+
+h2{
+color: aqua;
+}
+
+h3{
+color: blueviolet;
+}
+
+p{
+color: teal;
+font-weight: bold;
+}
+
+.details{
+  color: chocolate;
+  margin: 20px;
+  margin-right: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.delete{
+  color: red;
+  padding: 10px 15px;
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+.pizza_name{
+  color: coral;
+  font-weight: bold;
+}
+
+.pizza_ingredients{
+  color: darkgreen;
+}
+.restaurant_name{
+  /* color: darkmagenta; */
+  font-weight: bolder;
+}
+
+.restaurant_address{
+  /* color: mediumturquoise; */
+  font-weight: bold;
+}
+
