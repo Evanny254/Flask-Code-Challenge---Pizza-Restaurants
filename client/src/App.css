@@ -1,28 +1,56 @@
-#root {
+body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  animation: changeBackground 15s linear infinite;
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: larger;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+@keyframes changeBackground {
+  0% {
+    background-image: url('./img2.jpg');
+  }
+  33% {
+    background-image: url('./img3.jpg');
+  }
+  66% {
+    background-image: url('./img4.jpg');
+  }
+  100% {
+    background-image: url('./img1.jpg');
+  }
 }
 
 h1{
   max-width: 800px; 
-  margin: 0 auto;
-  padding: 20px;
-  color: brown;
+  margin-top: 1%;
+  padding: 5px;
+  color: honeydew;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: 20%;
 }
 
 h2{
-color: aqua;
+color: lightgoldenrodyellow;
+font-weight: bolder;
+font-size: larger;
 }
 
 h3{
-color: blueviolet;
+color: lightgreen;
+font-size: larger;
+font-weight: bolder;
 }
 
 p{
-color: teal;
-font-weight: bold;
+color: lightcyan;
+font-weight: bolder;
+font-size: larger;
 }
 
 .details{
@@ -42,20 +70,118 @@ font-weight: bold;
 }
 
 .pizza_name{
-  color: coral;
-  font-weight: bold;
+  color: fuchsia;
+  font-weight: bolder;
+  font-size: larger;
 }
 
 .pizza_ingredients{
-  color: darkgreen;
+  color: whitesmoke;
+  font-size: larger;
+  font-style: italic;
+  font-weight: bold;
 }
 .restaurant_name{
-  /* color: darkmagenta; */
   font-weight: bolder;
+  color: whitesmoke;
+  font-size: larger;
 }
 
 .restaurant_address{
-  /* color: mediumturquoise; */
   font-weight: bold;
+  color: yellow;
+  font-size: 1em;
+  
+}
+.restaurant-pizza-form {
+ margin: 20px auto;
+  padding: 10px;
+  border: 2px solid brown;
+  border-radius: 40px;
+  background-color: burlywood;
+  margin-left: 10px;
+
+  margin-left: 5px;
+}
+.restaurant-pizza-form label {
+  display: block;
+  margin-bottom: 1px;
+  font-weight: bolder;
+}
+
+.restaurant-pizza-form input {
+  padding: 8px;
+  margin-bottom: 1px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.restaurant-pizza-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  
+ 
+}
+
+.restaurant-pizza-form button:hover {
+  background-color: #45a049;
+}
+
+.restaurant-form {
+  padding: 10px;
+  border: 2px solid brown;
+  border-radius: 40px;
+  background-color: burlywood;
+
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px; 
+}
+
+.form-input {
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+ 
+}
+
+.form-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-button:hover {
+  background-color: #45a049;
+}
+.app-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  margin-left: 20px;
+}
+
+.forms-container {
+  flex: 0 0 300px; 
+  margin-left: 40px;
 }
 
