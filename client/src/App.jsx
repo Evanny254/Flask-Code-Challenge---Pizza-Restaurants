@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import RestaurantList from './components/RestaurantList.jsx';
 import RestaurantDetails from './components/RestaurantDetails.jsx';
+import RestaurantForm from './components/RestaurantForm.jsx';
+import RestaurantPizzaForm from './components/RestaurantPizzaForm.jsx';
 import './App.css';
 
 function App() {
@@ -42,18 +44,65 @@ function App() {
       .catch(error => console.error('Error deleting restaurant:', error));
   };
 
-  return (
-    <div>
-      <h1>Restaurants</h1>
-      <RestaurantList  
-        restaurants={restaurants}
-        onRestaurantClick={handleRestaurantClick}
-        onDeleteRestaurant={handleDeleteRestaurant}
-      />
+  const handleCreateRestaurant = (formData) => {
+    // Assuming formData contains necessary information for creating a new Restaurant
+    fetch('http://127.0.0.1:5000/restaurants', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle successful creation, you might want to update the UI or take other actions
+        console.log('Restaurant created successfully:', data);
+        // Refresh the list of restaurants after creation
+        fetch('http://127.0.0.1:5000/restaurants')
+          .then(response => response.json())
+          .then(data => setRestaurants(data))
+          .catch(error => console.error('Error fetching restaurants after creation:', error));
+      })
+      .catch(error => console.error('Error creating restaurant:', error));
+  };
 
-      {selectedRestaurant && (
-        <RestaurantDetails restaurant={selectedRestaurant} />
-      )}
+  const handleCreateRestaurantPizza = (formData) => {
+    // Assuming formData contains necessary information for creating a new RestaurantPizza
+    fetch('http://127.0.0.1:5000/restaurant_pizzas', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle successful creation, you might want to update the UI or take other actions
+        console.log('RestaurantPizza created successfully:', data);
+      })
+      .catch(error => console.error('Error creating RestaurantPizza:', error));
+  };
+
+  return (
+    <div className="app-container">
+      <h1>Pizza Restaurants</h1>
+      <div className="main-container">
+          <RestaurantList  
+            restaurants={restaurants}
+            onRestaurantClick={handleRestaurantClick}
+            onDeleteRestaurant={handleDeleteRestaurant}
+          />
+        <br />
+        <div className="details-container">
+          {selectedRestaurant && (
+            <RestaurantDetails restaurant={selectedRestaurant} />
+          )}
+        </div>
+        <div className="forms-container">
+          <RestaurantForm onCreateRestaurant={handleCreateRestaurant} />
+          <RestaurantPizzaForm onCreateRestaurantPizza={handleCreateRestaurantPizza}/>
+        </div>
+      </div>
     </div>
   );
 }
