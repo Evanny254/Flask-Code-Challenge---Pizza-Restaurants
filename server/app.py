@@ -25,7 +25,16 @@ class RestaurantsResource(Resource):
         restaurants = Restaurant.query.all()
         data = [{'id': r.id, 'name': r.name, 'address': r.address} for r in restaurants]
         return jsonify(data)
+    def post(self):
+        data = request.json
+        if 'name' not in data or 'address' not in data:
+            return {'error': 'Name and address are required fields'}, 400
 
+        new_restaurant = Restaurant(name=data['name'], address=data['address'])
+        db.session.add(new_restaurant)
+        db.session.commit()
+        return {'id': new_restaurant.id, 'name': new_restaurant.name, 'address': new_restaurant.address}, 201
+    
 api.add_resource(RestaurantsResource, '/restaurants')
 
 
