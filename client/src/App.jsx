@@ -10,7 +10,6 @@ function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   useEffect(() => {
-    // Fetch the list of restaurants
     fetch('http://127.0.0.1:5000/restaurants')
       .then(response => response.json())
       .then(data => setRestaurants(data))
@@ -18,7 +17,6 @@ function App() {
   }, []);
 
   const handleRestaurantClick = (restaurantId) => {
-    // Fetch details for the selected restaurant
     fetch(`http://127.0.0.1:5000/restaurants/${restaurantId}`)
       .then(response => response.json())
       .then(data => setSelectedRestaurant(data))
@@ -26,13 +24,11 @@ function App() {
   };
 
   const handleDeleteRestaurant = (restaurantId) => {
-    // Delete the selected restaurant
     fetch(`http://127.0.0.1:5000/restaurants/${restaurantId}`, {
       method: 'DELETE',
     })
       .then(response => {
         if (response.ok) {
-          // Refresh the list of restaurants after deletion
           fetch('http://127.0.0.1:5000/restaurants')
             .then(response => response.json())
             .then(data => setRestaurants(data))
@@ -45,7 +41,7 @@ function App() {
   };
 
   const handleCreateRestaurant = (formData) => {
-    // Assuming formData contains necessary information for creating a new Restaurant
+    
     fetch('http://127.0.0.1:5000/restaurants', {
       method: 'POST',
       headers: {
@@ -55,9 +51,7 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-        // Handle successful creation, you might want to update the UI or take other actions
         console.log('Restaurant created successfully:', data);
-        // Refresh the list of restaurants after creation
         fetch('http://127.0.0.1:5000/restaurants')
           .then(response => response.json())
           .then(data => setRestaurants(data))
@@ -67,7 +61,6 @@ function App() {
   };
 
   const handleCreateRestaurantPizza = (formData) => {
-    // Assuming formData contains necessary information for creating a new RestaurantPizza
     fetch('http://127.0.0.1:5000/restaurant_pizzas', {
       method: 'POST',
       headers: {
@@ -77,7 +70,6 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-        // Handle successful creation, you might want to update the UI or take other actions
         console.log('RestaurantPizza created successfully:', data);
       })
       .catch(error => console.error('Error creating RestaurantPizza:', error));
